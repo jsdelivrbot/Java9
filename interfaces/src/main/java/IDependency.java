@@ -1,5 +1,3 @@
-package main;
-
 @FunctionalInterface
 public interface IDependency {
     private String testPrivateMethod(){
