@@ -1,0 +1,3 @@
+module ModuleB {
+    exports PackageB;
+}
