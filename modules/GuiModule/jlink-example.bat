@@ -1,0 +1,1 @@
+ "C:\Program Files\Java\jdk-9\bin\jlink.exe" --module-path jars;"c:\Program Files\Java\jdk-9\jmods" --add-modules GuiModule --strip-debug --compress=2 --output image
