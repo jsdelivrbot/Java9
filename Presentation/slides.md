@@ -25,6 +25,34 @@ Create Runtime Image
 
 ## Modules
 
+Example For Swing: 
+
 ![](images/javafx.swing-graph.png)
 
 ---
+## Modules
+Declaration:
+
+module-info.java
+
+<code>
+module packA.module {
+
+
+}
+</code>
+
+Demo
+---
+
+## Interface Use Case
+1.  More than one implementation of a common interface
+2.  Public library such as Nuget Package (you don't have control over it)
+3.  When a single class is playing multiple roles. Implement many interfaces
+
+---
+##Interfaces Demo
+
+---
+
+
