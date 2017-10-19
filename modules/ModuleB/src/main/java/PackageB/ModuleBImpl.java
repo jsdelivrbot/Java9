@@ -1,6 +1,6 @@
 package PackageB;
 
-public class ModuleB {
+public class ModuleBImpl {
     public String getData() {
         return "Data From Module B";
     }

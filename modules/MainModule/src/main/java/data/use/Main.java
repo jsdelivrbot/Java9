@@ -1,13 +1,13 @@
 package data.use;
 
 
-import PackageB.ModuleB;
+import PackageB.ModuleBImpl;
 
 
 public class Main {
     public static void main(String[] args)
     {
-        ModuleB b = new ModuleB();
+        ModuleBImpl b = new ModuleBImpl();
         System.out.println(b.getData());
     }
 }
