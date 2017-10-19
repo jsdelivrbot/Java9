@@ -45,6 +45,9 @@ module packA.module {
 Demo
 ---
 
+## Interfaces
+---
+
 ## Interface Use Case
 1.  More than one implementation of a common interface
 2.  Public library such as Nuget Package (you don't have control over it)
@@ -52,7 +55,7 @@ Demo
 
 ---
 ##Interfaces Demo
-
 ---
+
 
 
