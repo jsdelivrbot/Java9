@@ -1,8 +1,9 @@
+
+/*
+Sample Functional interface working with Java 8 as well
+ */
 @FunctionalInterface
 public interface IDependency {
-    private String testPrivateMethod(){
-        return "Private method";
-    }
 
     String sayHello();
 
