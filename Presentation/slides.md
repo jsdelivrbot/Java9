@@ -75,9 +75,7 @@ module packA.module {
 
 ## Interface
 
- It is actually a concept of abstraction.
- For a given "box", it declares the "inputs" and "outputs" of that box.
- In the world of software, that usually means the operations that can be invoked on the box (along with arguments) and in some cases the return types of these operations.
+In Object Oriented Programming an Interface is a description of all functions that object must have in order to be an "X". The purpose of interfaces is to allow the computer to enforce these properties and to know that an object of TYPE T (whatever the interface is ) must have functions called X,Y,Z, etc.
 
 ---
 
