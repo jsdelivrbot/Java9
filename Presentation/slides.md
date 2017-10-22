@@ -67,6 +67,40 @@ module packA.module {
 ## Demo
 
 ---
+
+## Services
+
+
+![](images/Servicesample.PNG)
+---
+##Services
+
+Plugin architecture
+
+Adding modules without recompilation
+
+---
+## Services Privders
+<code>
+module privider1{
+
+    require MyService
+    provides MyService with MyServiceImpl1 
+}
+</code>
+
+---
+
+## Services Consumer
+<code>
+module Consumer{
+
+    require MyService
+    uses MyService 
+}
+</code>
+---
+
 ## Interfaces
 
 ### Definition
