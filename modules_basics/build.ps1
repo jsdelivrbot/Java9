@@ -31,5 +31,5 @@ $jar_path = Join-Path  $jav_path "jar.exe"
 &($javac_path) --module-path mods\com.module.a -d $moduleB $(Get-ChildItem .\src\com.module.client  -Recurse -Filter '*.java' -File | %{ $_.FullName})
 
 #packages module B
-#&($jar_path)  -c -f "output\moduleB\lib\moduleBClient.jar"  --main-class com.module.client.Client  -C "output\ModuleB\classesB" .
+&($jar_path)  -c -f "output\lib\moduleBClient.jar"  --main-class com.module.client.Client  -C "mods\com.module.client" .
 
