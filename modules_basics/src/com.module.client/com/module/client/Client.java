@@ -1,5 +1,5 @@
 package com.module.client;
-import com.module.a.*;
+import com.module.a.Sample;
 
 public class Client {
     public static void main(String[] args){
