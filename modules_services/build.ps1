@@ -34,9 +34,22 @@ $jar_path = Join-Path  $jav_path "jar.exe"
 
 
 
-# Compile module B
+# Compile Provider 1
 &($javac_path) --module-path "mods\com.api" -d $moduleProvider1 $(Get-ChildItem .\src\com.api.providerimplone -Recurse -Filter '*.java' -File | %{ $_.FullName})
 
-#packages module B
+#packages Provider 1
 &($jar_path)  -c -f "output\lib\moduleProviderOne.jar" -C "mods\com.api.providerimplone" .
 
+
+# Compile Provider 2
+&($javac_path) --module-path "mods\com.api" -d $moduleProvider2 $(Get-ChildItem .\src\com.api.providerimpltwo -Recurse -Filter '*.java' -File | %{ $_.FullName})
+
+#packages Provider 2
+&($jar_path)  -c -f "output\lib\moduleProviderTwo.jar" -C "mods\com.api.providerimpltwo" .
+
+
+#compile client
+&($javac_path) --module-path "mods\com.api" -d $moduleClient $(Get-ChildItem .\src\com.api.client  -Recurse -Filter '*.java' -File | %{ $_.FullName})
+
+#package client
+&($jar_path)  -c -f "output\lib\moduleClient.jar"  --main-class com.api.client.Client  -C "mods\com.api.client" .
