@@ -5,11 +5,18 @@ mkdir -Path output\lib -Force
 mkdir -Path mods -Force
 
 
-$moduleA = "mods\com.module.a"
-$moduleB =  "mods\com.module.client"
+$moduleApiService = "mods\com.api"
 
-mkdir -Path $moduleA  -Force
-mkdir -Path $moduleB  -Force
+$moduleProvider1 = "mods\com.api.providerimplone"
+$moduleProvider2 = "mods\com.api.providerimpltwo"
+$moduleClient = "mods\com.api.client"
+
+
+
+mkdir -Path $moduleApiService  -Force
+mkdir -Path $moduleProvider1  -Force
+mkdir -Path $moduleProvider2  -Force
+mkdir -Path $moduleClient  -Force
 
 
 
@@ -18,18 +25,18 @@ $javac_path = Join-Path  $jav_path "javac.exe"
 $jar_path = Join-Path  $jav_path "jar.exe"
 
 
-# Compile module A
-&($javac_path) -d $moduleA $(Get-ChildItem .\src\com.module.a  -Recurse -Filter '*.java' -File | %{ $_.FullName})
+# Compile Service Interface
+&($javac_path) -d $moduleApiService  $(Get-ChildItem .\src\com.api  -Recurse -Filter '*.java' -File | %{ $_.FullName})
 
-#package module A
+#package Service Interface
 
-&($jar_path)  -c -f "output\lib\com.module.a.jar" -C "mods\com.module.a" .
+&($jar_path)  -c -f "output\lib\commonApi.jar" -C "mods\com.api" .
 
 
 
 # Compile module B
-&($javac_path) --module-path mods\com.module.a -d $moduleB $(Get-ChildItem .\src\com.module.client  -Recurse -Filter '*.java' -File | %{ $_.FullName})
+&($javac_path) --module-path "mods\com.api" -d $moduleProvider1 $(Get-ChildItem .\src\com.api.providerimplone -Recurse -Filter '*.java' -File | %{ $_.FullName})
 
 #packages module B
-&($jar_path)  -c -f "output\lib\moduleBClient.jar"  --main-class com.module.client.Client  -C "mods\com.module.client" .
+&($jar_path)  -c -f "output\lib\moduleProviderOne.jar" -C "mods\com.api.providerimplone" .
 
