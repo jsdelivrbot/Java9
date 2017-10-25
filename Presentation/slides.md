@@ -56,7 +56,7 @@ Declaration:
 module-info.java
 
 <code>
-module packA.module {
+module com.module.a {
 
 
 }
