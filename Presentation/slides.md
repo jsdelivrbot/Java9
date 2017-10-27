@@ -1,3 +1,9 @@
+---
+output:
+  revealjs::revealjs_presentation:
+    incremental: true
+---
+
 ## Java 9 and Interface overused
 ---
 ## Agenda
@@ -7,9 +13,9 @@
 ---
 ## Java 9
 
-1.  Jshell
-2.  Jlink
-3.  Modules
+1.  Jshell  <!-- .element: class="fragment" -->
+2.  Jlink  <!-- .element: class="fragment" -->
+3.  Modules <!-- .element: class="fragment" -->
 ---
 
 ## Jshell Demo
@@ -17,29 +23,65 @@ Project Kulla (REPL) Read-eval-Print Loop
 
 ---
 
-## Jlink Demo
+## Remind what is classpath
+Classpath is a parameter in the Java Virtual Machine or the Java compiler that specifies the location of user-defined classes and packages.
 
-Create Runtime Image
+
+---
+
+##Sample old app
+
+<table class="wikitable" style="font-size:90%">
+<tbody><tr>
+<th><a href="/wiki/Microsoft_Windows" title="Microsoft Windows">Microsoft Windows</a></th>
+</tr>
+<tr>
+<td>
+<pre>D:\myprogram\
+      |
+      ---&gt; org\  
+            |
+            ---&gt; mypackage\
+                     |
+                     ---&gt; HelloWorld.class       
+                     ---&gt; SupportClass.class   
+                     ---&gt; UtilClass.class     
+</pre></td>
+</tr>
+</tbody></table>
+
+---
+
+## Running Application 
+java -classpath D:\myprogram org.mypackage.HelloWorld
+
 ---
 
 ## Modules
 
 Before  Jigsaw
-1.  Classpath Hell
-2.  NoClassDefFoundError at runtime (2 version of 3rd pary jar in classpath)
-1.  Java 8 and below not know about their own dependeci
-
----
-## Jigsaw
-Basically, a module is nothing more than a good old JAR file, compiled from good old Java files. But there is one crucial difference: one of the files is called module-info.java. As the name suggests, it declares our module. It defines
+*  Classpath Hell <!-- .element: class="fragment" -->
+*  NoClassDefFoundError at runtime (example: 2 version of 3rd pary jar in classpath ) <!-- .element: class="fragment" -->
+*  Java 8 and below not know about their own dependencies <!-- .element: class="fragment" -->
 
 ---
 
+## What is Jigsaw
+Project Jigsaw
+
+Work on Project Jigsaw began in August 2008 with an initial exploratory phase. Work on the design and implementation for Java 9 began in 2014.
+
+---
+
+## Jigsaw
+Basically, a module is nothing more than a good old JAR file, compiled from good old Java files. But there is one crucial difference: one of the files is called module-info.java. As the name suggests, it declares our module.
+
+---
 ## Jigsaw
 
-1.  the unique name of our module
-2.  which other modules our module depends on
-3.  which packages are to be exported to be used by other modules
+1.  the unique name of our module <!-- .element: class="fragment" -->
+2.  which other modules our module depends on <!-- .element: class="fragment" -->
+3.  which packages are to be exported to be used by other modules <!-- .element: class="fragment" -->
 
 ---
 
@@ -52,15 +94,11 @@ Example For Swing:
 ---
 ## Modules
 Declaration:
+module-info.java <!-- .element: class="fragment" -->
 
-module-info.java
+module com.module.a { <!-- .element: class="fragment" -->
 
-<code>
-module com.module.a {
-
-
-}
-</code>
+}<!-- .element: class="fragment" -->
 
 
 ---
@@ -80,25 +118,43 @@ Plugin architecture
 Adding modules without recompilation
 
 ---
-## Services Privders
-<code>
-module privider1{
+##Service
+```
+module commonApi{
 
-    require MyService
-    provides MyService with MyServiceImpl1 
+    exports com.api;
 }
-</code>
+
+```
+
+
+---
+
+
+## Services Privders
+```
+module com.api.providerimplone {
+
+    requires commonApi;
+    provides com.api.MyService with com.api.providerimplone.ProviderImplOne;
+}
+```
 
 ---
 
 ## Services Consumer
-<code>
-module Consumer{
+``` java
+module com.api.client{
 
-    require MyService
-    uses MyService 
+    requires commonApi;
+    uses com.api.MyService;
 }
-</code>
+```
+---
+
+## Jlink Demo
+
+Create Runtime Image
 ---
 
 ## Interfaces
@@ -106,20 +162,39 @@ module Consumer{
 ### Definition
 ---
 
-
 ## Interface
 
 In Object Oriented Programming an Interface is a description of all functions that object must have in order to be an "X". The purpose of interfaces is to allow the computer to enforce these properties and to know that an object of TYPE T (whatever the interface is ) must have functions called X,Y,Z, etc.
 
 ---
 
-## Interface Use Case
-1.  More than one implementation of a common interface
-2.  Public library such as Nuget Package (you don't have control over it)
-3.  When a single class is playing multiple roles. Implement many interfaces
+## Interface
+Why we are using interface?
+
+* create loosely coupled software <!-- .element: class="fragment" -->
+* support design by contract (an implementor must provide the entire interface) <!-- .element: class="fragment" -->
+* allow for pluggable software <!-- .element: class="fragment" -->
+* allow different objects to interact easily <!-- .element: class="fragment" -->
+* hide implementation details of classes from each other <!-- .element: class="fragment" -->
+---
+
+## Interface Use Cases
+1.  More than one implementation of a common interface <!-- .element: class="fragment" -->
+2.  Public library such as Nuget Package (you don't have control over it) <!-- .element: class="fragment" -->
+3.  When a single class is playing multiple roles. Implement many interfaces <!-- .element: class="fragment" -->
 
 ---
-##Interfaces Demo
+
+## Define problem 
+
+Only "One" implementation of interface.
+
+---
+## Interfaces
+
+*  Without interface you cannot do  Dependency Injection  <!-- .element: class="fragment" -->
+*  What about testing in isolation  <!-- .element: class="fragment" -->
+
 ---
 
 
