@@ -4,32 +4,50 @@ output:
     incremental: true
 ---
 
-## Java 9 and Interface overused
+## Java 9 
+## Interface overusing
 ---
 ## Agenda
 1.  Java 9
-2.  Interface Usage
+2.  Interface Overusing
 
 ---
 ## Java 9
 
 1.  Jshell  <!-- .element: class="fragment" -->
-2.  Jlink  <!-- .element: class="fragment" -->
-3.  Modules <!-- .element: class="fragment" -->
+1.  Modules (Jigsaw) <!-- .element: class="fragment" -->
+1.  Jlink  <!-- .element: class="fragment" -->
 ---
 
 ## Jshell Demo
 Project Kulla (REPL) Read-eval-Print Loop
 
 ---
+## Modules
+ Before go into details let's remind few things
+ * Package  <!-- .element: class="fragment" -->
+ * Classpath   <!-- .element: class="fragment" -->
+ * Jar  <!-- .element: class="fragment" -->
+---
 
-## Remind what is classpath
-Classpath is a parameter in the Java Virtual Machine or the Java compiler that specifies the location of user-defined classes and packages.
-
+## Package definition
+* Package is a namespace that organizes a set of related classes and interfaces.
+    
+    Conceptually you can think of packages as being similar to different folders on your computer
 
 ---
 
-##Sample old app
+## What is classpath
+Classpath is a parameter in the Java Virtual Machine or the Java compiler that specifies the location of user-defined classes and packages.
+
+---
+## Jar
+
+JAR stands for Java ARchive. It's a file format based on the popular ZIP file format and is used for aggregating many files into one.
+
+---
+
+## Sample old app
 
 <table class="wikitable" style="font-size:90%">
 <tbody><tr>
@@ -73,7 +91,7 @@ Work on Project Jigsaw began in August 2008 with an initial exploratory phase. W
 
 ---
 
-## Jigsaw
+## Module definition
 Basically, a module is nothing more than a good old JAR file, compiled from good old Java files. But there is one crucial difference: one of the files is called module-info.java. As the name suggests, it declares our module.
 
 ---
@@ -96,7 +114,7 @@ Example For Swing:
 Declaration:
 module-info.java <!-- .element: class="fragment" -->
 
-module com.module.a { <!-- .element: class="fragment" -->
+module moduleA { <!-- .element: class="fragment" -->
 
 }<!-- .element: class="fragment" -->
 
@@ -106,19 +124,25 @@ module com.module.a { <!-- .element: class="fragment" -->
 
 ---
 
+## What if we want to add modules dynamically ?
+
+Services <!-- .element: class="fragment" -->
+---
+
 ## Services
 
 
 ![](images/Servicesample.PNG)
 ---
-##Services
+## Services
+What give us ?
 
-Plugin architecture
+* Plugin architecture
 
-Adding modules without recompilation
+* Adding modules without recompilation
 
 ---
-##Service
+## Service
 ```
 module commonApi{
 
@@ -126,10 +150,7 @@ module commonApi{
 }
 
 ```
-
-
 ---
-
 
 ## Services Privders
 ```
@@ -139,7 +160,6 @@ module com.api.providerimplone {
     provides com.api.MyService with com.api.providerimplone.ProviderImplOne;
 }
 ```
-
 ---
 
 ## Services Consumer
@@ -152,7 +172,7 @@ module com.api.client{
 ```
 ---
 
-## Jlink Demo
+## Jlink
 
 Create Runtime Image
 ---
