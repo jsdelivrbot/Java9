@@ -135,11 +135,11 @@ Services <!-- .element: class="fragment" -->
 ![](images/Servicesample.PNG)
 ---
 ## Services
-What give us ?
+What gives us ?
 
-* Plugin architecture
+* Plugin architecture <!-- .element: class="fragment" -->
 
-* Adding modules without recompilation
+* Adding modules without recompilation <!-- .element: class="fragment" -->
 
 ---
 ## Service
