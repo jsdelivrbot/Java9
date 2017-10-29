@@ -198,16 +198,10 @@ Why we are using interface?
 * hide implementation details of classes from each other <!-- .element: class="fragment" -->
 ---
 
-## Interface Use Cases
-1.  More than one implementation of a common interface <!-- .element: class="fragment" -->
-2.  Public library such as Nuget Package (you don't have control over it) <!-- .element: class="fragment" -->
-3.  When a single class is playing multiple roles. Implement many interfaces <!-- .element: class="fragment" -->
 
----
+## Problem 
 
-## Define problem 
-
-Only "One" implementation of interface.
+Developers start using interface for almost every class.
 
 ---
 ## Interfaces
